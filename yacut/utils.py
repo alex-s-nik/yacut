@@ -3,6 +3,7 @@ import string
 
 LEN_SHORT_ID = 6
 
+
 def get_unique_short_id():
     return ''.join(
         random.choice(
