@@ -11,4 +11,4 @@ db = SQLAlchemy(app)
 migrate = Migrate(app=app, db=db)
 
 
-from . import views, api_view
+from . import api_view, error_handlers, views
