@@ -4,6 +4,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, URLField
 from wtforms.validators import DataRequired, Length, Optional, URL, ValidationError
 
+from .utils import MAX_LEN_SHORT_ID
+from .validators import is_not_letters_and_digits
+
 
 class URLMapForm(FlaskForm):
     original_link = URLField(
@@ -17,14 +20,18 @@ class URLMapForm(FlaskForm):
     custom_id = StringField(
         label='Ваш вариант короткой ссылки',
         validators=[
-            Length(min=1, max=16, message='Максимальная длина короткой ссылки - 16 символов'),
+            Length(
+                min=1,
+                max=MAX_LEN_SHORT_ID,
+                message=f'Максимальная длина короткой ссылки - {MAX_LEN_SHORT_ID} символов'
+            ),
             Optional()
         ]
     )
     submit = SubmitField(label='Создать')
 
     def validate_custom_id(form, field):
-        if any(char not in (string.ascii_letters + string.digits) for char in field.data):
+        if is_not_letters_and_digits(field.data):
             raise ValidationError(
                 ('Короткая ссылка может состоять только из больших латинских букв, '
                  'маленьких латинских букв и цифр в диапазоне от 0 до 9')

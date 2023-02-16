@@ -17,16 +17,18 @@ def index_view():
 
     if short_link:
         if short_link_exists(short_link):
-            flash('Такая короткая ссылка уже есть в сервисе')
+            flash(f'Имя {short_link} уже занято!', 'is_used')
             return render_template('index.html', form=form)
 
         new_link = create_new_link(form.original_link.data, short_link)
-        flash(url_for('redirect_view', short_link_id=new_link.short, _external=True))
+        url = url_for('redirect_view', short_link_id=new_link.short, _external=True) 
+        flash(url, 'url_ready')
         return render_template('index.html', form=form)
 
     short_link = get_unique_short_id()
     new_link = create_new_link(form.original_link.data, short_link)
-    flash(url_for('redirect_view', short_link_id=new_link.short, _external=True))
+    url = url_for('redirect_view', short_link_id=new_link.short, _external=True) 
+    flash(url, 'url_ready')
     return render_template('index.html', form=form)
 
 

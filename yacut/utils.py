@@ -4,6 +4,7 @@ import string
 from .services import short_link_exists
 
 LEN_SHORT_ID = 6
+MAX_LEN_SHORT_ID = 16
 
 
 def get_unique_short_id():

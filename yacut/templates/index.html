@@ -50,11 +50,25 @@
           <div class="col-sm">
           </div>
           <div class="col-sm">
-            {% with messages = get_flashed_messages() %}
+            {% with messages = get_flashed_messages(category_filter=["is_used"]) %}
               {% if messages %}
                 {% for message in messages %}
                 <p class="text-center">
                 <h5 class="text-center">{{ message }}</h5>
+                </p>
+                  
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {% with messages = get_flashed_messages(category_filter=["url_ready"]) %}
+              {% if messages %}
+                {% for message in messages %}
+                <p class="text-center">
+                <h5 class="text-center">Ваша ссылка готова</h5>
+                </p>
+                <p class="text-center">
+                  <a href="{{ message }}">{{ message }}</a>
                 </p>
                   
                 {% endfor %}
