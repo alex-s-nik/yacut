@@ -11,6 +11,7 @@ def create_new_link(original, short):
     db.session.commit()
     return new_link
 
+
 def create_new_link_from_json(data):
     new_link = URLMap()
     new_link.from_dict(data)

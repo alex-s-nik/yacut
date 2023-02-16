@@ -21,13 +21,13 @@ def index_view():
             return render_template('index.html', form=form)
 
         new_link = create_new_link(form.original_link.data, short_link)
-        url = url_for('redirect_view', short_link_id=new_link.short, _external=True) 
+        url = url_for('redirect_view', short_link_id=new_link.short, _external=True)
         flash(url, 'url_ready')
         return render_template('index.html', form=form)
 
     short_link = get_unique_short_id()
     new_link = create_new_link(form.original_link.data, short_link)
-    url = url_for('redirect_view', short_link_id=new_link.short, _external=True) 
+    url = url_for('redirect_view', short_link_id=new_link.short, _external=True)
     flash(url, 'url_ready')
     return render_template('index.html', form=form)
 

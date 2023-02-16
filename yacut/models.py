@@ -17,9 +17,9 @@ class URLMap(db.Model):
         for field in ['id', 'original', 'short', 'timestamp']:
             if field in data:
                 setattr(self, field, data[field])
-                
+
     def to_dict(self):
         return dict(
-            url = self.original,
-            short_link = self.short
+            url=self.original,
+            short_link=self.short
         )

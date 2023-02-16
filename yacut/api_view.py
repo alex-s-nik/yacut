@@ -19,7 +19,7 @@ def create_link():
         raise InvalidAPIUsage('Отсутствует тело запроса')
     if 'url' not in data:
         raise InvalidAPIUsage('"url" является обязательным полем!')
-    
+
     new_data['original'] = data['url']
 
     if 'custom_id' not in data or not data['custom_id']:
@@ -36,12 +36,11 @@ def create_link():
                 'Указано недопустимое имя для короткой ссылки'
             )
         new_data['short'] = data['custom_id']
-    
 
     new_link = create_new_link_from_json(new_data)
     new_link['short_link'] = url_for('redirect_view', short_link_id=new_link['short_link'], _external=True)
     print(new_link)
-    
+
     return jsonify(new_link), HTTPStatus.CREATED
 
 

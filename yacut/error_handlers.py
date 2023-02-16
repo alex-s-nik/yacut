@@ -12,11 +12,11 @@ class InvalidAPIUsage(Exception):
         self.status_code = status_code
 
     def to_dict(self):
-        return dict(message = self.message)
+        return dict(message=self.message)
 
-@app.errorhandler(InvalidAPIUsage) 
+
+@app.errorhandler(InvalidAPIUsage)
 def invalid_api_usage(error):
-    # Возвращает в ответе текст ошибки и статус-код
     return jsonify(error.to_dict()), error.status_code
 
 
