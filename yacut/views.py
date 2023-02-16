@@ -1,8 +1,10 @@
 from flask import flash, redirect, render_template, url_for
 
 from yacut import app
+
 from .forms import URLMapForm
-from .services import create_new_link, get_original_link_by_short, short_link_exists
+from .services import (create_new_link, get_original_link_by_short,
+                       short_link_exists)
 from .utils import get_unique_short_id
 
 

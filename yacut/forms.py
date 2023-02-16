@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, URLField
-from wtforms.validators import DataRequired, Length, Optional, URL, ValidationError
+from wtforms.validators import (URL, DataRequired, Length, Optional,
+                                ValidationError)
 
 from .utils import MAX_LEN_SHORT_ID
 from .validators import is_not_letters_and_digits
