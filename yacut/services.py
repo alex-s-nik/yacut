@@ -11,6 +11,13 @@ def create_new_link(original, short):
     db.session.commit()
     return new_link
 
+def create_new_link_from_json(data):
+    new_link = URLMap()
+    new_link.from_dict(data)
+    db.session.add(new_link)
+    db.session.commit()
+    return new_link.to_dict()
+
 
 def short_link_exists(link_id):
     return db.session.query(db.exists().where(URLMap.short == link_id)).scalar()

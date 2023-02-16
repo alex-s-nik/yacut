@@ -12,3 +12,16 @@ class URLMap(db.Model):
     short = db.Column(db.String(16), nullable=False, unique=True)
     # поле для временной метки
     timestamp = db.Column(db.DateTime, default=datetime.now)
+
+    def from_dict(self, data):
+        for field in ['id', 'original', 'short', 'timestamp']:
+            if field in data:
+                setattr(self, field, data[field])
+                
+    def to_dict(self):
+        return dict(
+            id = self.id,
+            original = self.original,
+            short = self.short,
+            timestamp = self.timestamp
+        )
