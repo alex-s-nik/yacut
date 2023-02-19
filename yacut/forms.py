@@ -12,7 +12,7 @@ class URLMapForm(FlaskForm):
         label='Длинная ссылка',
         validators=[
             DataRequired(message='Обязательное поле'),
-            Length(min=1, max=256, message='Слишком длинная ссылка, допускается до 256 символов'),
+            Length(max=256, message='Слишком длинная ссылка, допускается до 256 символов'),
             URL(require_tld=True, message='Неверный формат ссылки')
         ]
     )
@@ -20,7 +20,6 @@ class URLMapForm(FlaskForm):
         label='Ваш вариант короткой ссылки',
         validators=[
             Length(
-                min=1,
                 max=MAX_LEN_SHORT_ID,
                 message=f'Максимальная длина короткой ссылки - {MAX_LEN_SHORT_ID} символов'
             ),
