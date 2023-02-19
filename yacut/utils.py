@@ -6,6 +6,10 @@ from .services import short_link_exists
 LEN_SHORT_ID = 6
 MAX_LEN_SHORT_ID = 16
 
+LOWER_LETTERS_N_DIGITS = frozenset(
+    string.ascii_letters + string.digits
+)
+
 
 def get_unique_short_id():
     while True:
@@ -17,6 +21,6 @@ def get_unique_short_id():
 def _make_id():
     return ''.join(
         random.choice(
-            string.ascii_letters + string.digits
+            tuple(LOWER_LETTERS_N_DIGITS)
         ) for _ in range(LEN_SHORT_ID)
     )
