@@ -1,4 +1,4 @@
-from utils import LOWER_LETTERS_N_DIGITS
+from .utils import LOWER_LETTERS_N_DIGITS
 
 
 def is_not_letters_and_digits(s: str) -> bool:
